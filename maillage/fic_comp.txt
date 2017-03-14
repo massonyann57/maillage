@@ -1,0 +1,1 @@
+gcc -Wall -g *.c maillage/*.c maillage/*/*.c courbe/*.c courbe/*/*.c surface/fonc_surf/*.c outils/*.c outils/*/*.c parametre/*.c parametre/*/*.c surface/*.c outils/*/*/*.c test/*.c -lm -o../maillage

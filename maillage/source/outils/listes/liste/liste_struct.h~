@@ -1,0 +1,35 @@
+#ifndef H_LISTE_STRUCT
+
+#define H_LISTE_STRUCT
+
+/*
+ * Une maille de la liste double chainée
+ */
+typedef struct Liste{
+  void *el; /* élément courant */
+  struct Liste* n; /* maille suivante */
+  struct Liste* p; /* maillle suivante */
+}Liste;
+
+/*
+ * Une liste doublement chainée 
+ * (qui peut être trié via un callback)
+ */
+typedef struct SListe{
+  /* callback comparant 2 éléments
+   * 0 : même élément
+   * 1 : el1 > el2
+   * -1 : el1 < el2
+   */
+  int (*cmp)(void *el1, void *el2, void *param); 
+  /* callback exportant l'élément */
+  void *param_cmp; /* un parametre de cmp*/
+  void (*exp)(void *el, void *param);
+  void *param_exp;
+  struct Liste* l; /* la 1ere maille */
+  struct Liste* fin; /* la derniere maille */
+}SListe;
+
+typedef SListe* PSListe;
+
+#endif
